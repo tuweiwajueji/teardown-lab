@@ -188,7 +188,7 @@ TEARDOWN_QUALITY=hi npm run stills <name>    # 有 GPU 时强制全画质
 5. **按依赖顺序写**：`kin.js`（先在 Node 里跑通几个值）→ `geometry.js` → `stage.js`（含 `look.lo`）→ `console.js` → `timeline.json` + `film.js` → `score.py` → `live.js`。
 6. **每写完一层就出静帧**：`npm run stills <name>`，读图，修。不要等全部写完才第一次看画面。
 7. **评审循环**：按 `docs/REVIEW.md` 清单逐张查，直到完整一遍没问题。
-8. **出片**：`npm run film <name>`，读成片静帧表和 `_wave.png`，确认声音落在节拍上。
+8. **出片**：先用交付尺寸渲 2 秒测耗时（`node kit/capture.mjs <name>-film --size 1600x900 --dpr 1.2 --to 2 --out teardown-out/probe.mp4`），推算全片时长并告诉用户，再 `npm run film <name>`。读成片静帧表和 `_wave.png`，确认声音落在节拍上。
 9. **加进 CI**：把 `<name>` 加进 `.github/workflows/ci.yml` 的 `machine` 矩阵。
 10. **开 PR，不合并**：PR 描述附静帧表、交互页截图、出片时长和文件大小，逐条写下面的交付标准结果。
 
