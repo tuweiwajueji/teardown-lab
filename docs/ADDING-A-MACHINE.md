@@ -167,7 +167,7 @@ export const run = () => runSim(DEFAULTS, makeFilm());
 npm install                                  # clean checkout 后一条命令：依赖 + Chromium + ffmpeg
 npm run build  <name>                        # teardown-out/dist/<name>.html（交互页）和 <name>-film.html
 npm run stills <name>                        # teardown-out/<name>-stills.png
-npm run film   <name>                        # teardown-out/<name>.mp4 + <name>-wave.png
+npm run film   <name>                        # teardown-out/<name>.mp4 + <name>_wave.png
 npm run film   <name> -- --fps 30            # 降帧率加快出片（默认 60）
 npm run film   <name> -- --from 0 --to 5     # 只出前 5 秒的小样
 TEARDOWN_QUALITY=hi npm run stills <name>    # 有 GPU 时强制全画质
@@ -188,7 +188,7 @@ TEARDOWN_QUALITY=hi npm run stills <name>    # 有 GPU 时强制全画质
 5. **按依赖顺序写**：`kin.js`（先在 Node 里跑通几个值）→ `geometry.js` → `stage.js`（含 `look.lo`）→ `console.js` → `timeline.json` + `film.js` → `score.py` → `live.js`。
 6. **每写完一层就出静帧**：`npm run stills <name>`，读图，修。不要等全部写完才第一次看画面。
 7. **评审循环**：按 `docs/REVIEW.md` 清单逐张查，直到完整一遍没问题。
-8. **出片**：`npm run film <name>`，读成片静帧表和 `-wave.png`，确认声音落在节拍上。
+8. **出片**：`npm run film <name>`，读成片静帧表和 `_wave.png`，确认声音落在节拍上。
 9. **加进 CI**：把 `<name>` 加进 `.github/workflows/ci.yml` 的 `machine` 矩阵。
 10. **开 PR，不合并**：PR 描述附静帧表、交互页截图、出片时长和文件大小，逐条写下面的交付标准结果。
 
@@ -203,7 +203,7 @@ TEARDOWN_QUALITY=hi npm run stills <name>    # 有 GPU 时强制全画质
 - [ ] `render(0)` 即缩略图：机器完整可见。
 - [ ] `npm run build <name>` 成功，交互页 < 1 MB，离线打开能按按钮、拖动、自动巡游。
 - [ ] `npm run stills <name>` 成功，静帧表逐张查过：无干涉、无裁切、文字完整、每个状态停留够长。
-- [ ] `npm run film <name>` 在无 GPU（lo）环境出片成功，时长等于 `timeline.json` 的 `duration`，配乐落在节拍上（看 `-wave.png`）。
+- [ ] `npm run film <name>` 在无 GPU（lo）环境出片成功，时长等于 `timeline.json` 的 `duration`，配乐落在节拍上（看 `_wave.png`）。
 - [ ] `score.py` 不含手写时刻，全部从 `tl["script"]` 推出。
 - [ ] CI 矩阵已加入新机器且通过。
 - [ ] PR 已开，未合并。

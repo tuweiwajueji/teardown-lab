@@ -2,7 +2,7 @@
 // One entry point for every machine:
 //
 //   npm run build  <machine>   → teardown-out/dist/<machine>.html (live page, offline, < 1 MB) + <machine>-film.html
-//   npm run film   <machine>   → teardown-out/<machine>.mp4 (every frame rendered, score muxed) + <machine>-wave.png
+//   npm run film   <machine>   → teardown-out/<machine>.mp4 (every frame rendered, score muxed) + <machine>_wave.png
 //   npm run stills <machine>   → teardown-out/<machine>-stills.png (one tile per timeline beat) + full frames
 //
 // film and stills capture at 1600x900 CSS px, dpr 1.2 (1920x1080 out); pass --size/--dpr to override

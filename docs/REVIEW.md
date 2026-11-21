@@ -11,7 +11,7 @@
    - 指定时刻：`npm run stills <machine> -- --stills 4.2,9.8`
    - 单张整帧：`node kit/capture.mjs <machine>-film --size 1600x900 --dpr 1.2 --still T`
 4. 修改、重建，回到第 1 步。完整一遍没发现问题才停。
-5. 出片后：`npm run film <machine>`，再读成片的静帧表 `node kit/sheet.mjs --video teardown-out/<machine>.mp4 --timeline machines/<machine>/timeline.json`（它看的是编码器实际写出的画面），以及 `teardown-out/<machine>-wave.png`（配乐波形叠 timeline 节拍线）。
+5. 出片后：`npm run film <machine>`，再读成片的静帧表 `node kit/sheet.mjs --video teardown-out/<machine>.mp4 --timeline machines/<machine>/timeline.json`（它看的是编码器实际写出的画面），以及 `teardown-out/<machine>_wave.png`（配乐波形叠 timeline 节拍线）。
 
 ## 清单（每张都查）
 
@@ -20,7 +20,7 @@
 - **文字**：没有被截断的文字；关键读数在手机宽度下能读。
 - **3D**：bloom 会吃掉细节，自发光层保持在 1.0 以下；近白表面不过曝；低光下的光泽金属会出条纹，大面积表面用 roughness ≥ 0.45、envMapIntensity ≈ 0.5。
 - **时序**：每个状态停留足够读完：短语 1 s，超过三个词每词再加 0.25 s。
-- **声音**（看 `-wave.png`）：每个声响落在节拍线上或稍后一点；连续运动不配声。
+- **声音**（看 `_wave.png`）：每个声响落在节拍线上或稍后一点；连续运动不配声。
 
 ## lo 画质的评审
 

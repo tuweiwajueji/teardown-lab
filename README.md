@@ -23,7 +23,7 @@ npm install
 ```bash
 npm run build  v8      # teardown-out/dist/v8.html（交互页）+ v8-film.html（给捕获用）
 npm run stills v8      # teardown-out/v8-stills.png，整帧在 v8-stills-frames/
-npm run film   v8      # teardown-out/v8.mp4（1920×1080，60 fps，带配乐）+ v8-wave.png
+npm run film   v8      # teardown-out/v8.mp4（1920×1080，60 fps，带配乐）+ v8_wave.png
 ```
 
 机器名：`v8`、`cessna`、`strandbeest`。常用参数（放在 `--` 之后）：
