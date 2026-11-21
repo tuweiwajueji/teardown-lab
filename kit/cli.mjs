@@ -51,7 +51,9 @@ fs.mkdirSync(OUT, {recursive: true});
 
 if (cmd === 'stills') {
   const out = path.join(OUT, `${machine}-stills.png`);
-  capture(['--stills', 'beats', '--cols', '4', '--timeline', timeline, '--out', out, ...rest]);
+  // capture.mjs reads the first occurrence of a flag, so defaults go in only when not passed
+  const dflt = (k, v) => (rest.includes(`--${k}`) ? [] : [`--${k}`, v]);
+  capture([...dflt('stills', 'beats'), ...dflt('cols', '4'), ...dflt('timeline', timeline), ...dflt('out', out), ...rest]);
   process.exit(0);
 }
 
