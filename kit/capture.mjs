@@ -60,7 +60,7 @@ if (music) {
   fs.mkdirSync(path.dirname(cache), {recursive: true});
   const {execFileSync} = await import('node:child_process');
   if (!fs.existsSync(cache) || fs.statSync(cache).mtimeMs < fs.statSync(music).mtimeMs) {
-    execFileSync(PYTHON, ['-I', path.join(HERE, 'beats.py'), music, '--duration', String(dur), '--start', ms, '-o', cache], {stdio: 'inherit'});
+    execFileSync(PYTHON, ['-I', path.join(HERE, 'beats.py'), music, '--duration', String(dur), '--start', ms, '-o', cache], {stdio: 'inherit', env: {...process.env, FFMPEG}});
   }
   beats = JSON.parse(fs.readFileSync(cache, 'utf8'));
   if (!opt('no-sync')) config.beats = beats;

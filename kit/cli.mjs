@@ -62,7 +62,7 @@ const silent = path.join(OUT, `${machine}-silent.mp4`);
 const wav = path.join(OUT, `${machine}-score.wav`);
 const out = path.join(OUT, `${machine}.mp4`);
 capture(['--out', silent, '--fps', opt('fps') ?? '60', ...rest.filter((x, i) => x !== '--fps' && rest[i - 1] !== '--fps')]);
-run(PYTHON, [path.join(KIT, 'run_sfx.py'), path.join(dir, 'score.py'), '--timeline', timeline, '--out', wav]);
+run(PYTHON, [path.join(KIT, 'run_sfx.py'), path.join(dir, 'score.py'), '--timeline', timeline, '--out', wav], {FFMPEG});
 const from = Number(opt('from') ?? 0);
 run(FFMPEG, ['-loglevel', 'error', '-y', '-i', silent, '-ss', String(from), '-i', wav, '-map', '0:v', '-map', '1:a',
   '-c:v', 'copy', '-c:a', 'aac', '-b:a', '256k', '-shortest', '-movflags', '+faststart', out]);
