@@ -1,0 +1,12 @@
+{
+  "duration": 30.7,
+  "script": [
+    {"t": 0, "view": "cine"},
+    {"t": 3.4, "iso": 1, "view": "leg"},
+    {"t": 9.6, "iso": 0, "view": "front"},
+    {"t": 13.0, "wind": [6, 12.5, 1.6]},
+    {"t": 16.8, "view": "side"},
+    {"t": 21.0, "view": "top"},
+    {"t": 25.8, "view": "cine"}
+  ]
+}

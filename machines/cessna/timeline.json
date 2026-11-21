@@ -1,0 +1,21 @@
+{
+  "duration": 26.2,
+  "script": [
+    {"t": 0, "seq": "takeoff", "view": "hero"},
+    {"t": 2.4, "display": "fuselage"},
+    {"t": 5.4, "seq": "landing"},
+    {"t": 5.9, "view": "gearbox"},
+    {"t": 6.5, "display": "labels"},
+    {"t": 8.7, "view": "sidetube"},
+    {"t": 10.9, "view": "front"},
+    {"t": 11.5, "display": "xray"},
+    {"t": 12.7, "display": "labels"},
+    {"t": 13.0, "seq": "takeoff"},
+    {"t": 13.4, "view": "plan"},
+    {"t": 16.2, "display": "exploded"},
+    {"t": 17.8, "display": "exploded"},
+    {"t": 18.3, "view": "hero"},
+    {"t": 18.7, "display": "orbit"},
+    {"t": 19.1, "seq": "landing"}
+  ]
+}

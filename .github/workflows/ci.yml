@@ -1,0 +1,47 @@
+name: CI
+
+# 每个 PR：从 clean checkout 安装，build 三台示例，在无 GPU 的 runner 上（SwiftShader + lo 画质）出评审静帧表，
+# 作为 artifact 上传。不出片、不发布。
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stills:
+    # Playwright 1.58 的 Chromium 不支持 ubuntu-26.04（ubuntu-latest），固定 24.04
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        machine: [v8, cessna, strandbeest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: npm install（依赖 + Chromium + ffmpeg）
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install-deps chromium
+      - name: build ${{ matrix.machine }}
+        run: npm run build ${{ matrix.machine }}
+      - name: stills ${{ matrix.machine }}
+        run: npm run stills ${{ matrix.machine }}
+      - name: 检查产物
+        run: |
+          test -s teardown-out/dist/${{ matrix.machine }}.html
+          test -s teardown-out/${{ matrix.machine }}-stills.png
+          ls -la teardown-out teardown-out/dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stills-${{ matrix.machine }}
+          path: |
+            teardown-out/${{ matrix.machine }}-stills.png
+            teardown-out/${{ matrix.machine }}-stills-frames/
+            teardown-out/dist/${{ matrix.machine }}.html
+          if-no-files-found: error
+          retention-days: 14

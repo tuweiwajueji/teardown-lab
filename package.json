@@ -1,0 +1,26 @@
+{
+  "name": "teardown-lab",
+  "version": "0.1.0",
+  "private": true,
+  "description": "可长期复用的 3D 拆解模拟器库：每台机器一个文件夹，一条命令出离线 HTML、带配乐的 mp4 和评审静帧表。",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "postinstall": "playwright install chromium",
+    "build": "node kit/cli.mjs build",
+    "film": "node kit/cli.mjs film",
+    "stills": "node kit/cli.mjs stills"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "5.3.0",
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "esbuild": "0.28.1",
+    "ffmpeg-static": "5.2.0",
+    "ffprobe-static": "3.1.0",
+    "playwright": "1.58.2",
+    "three": "0.186.1"
+  }
+}
