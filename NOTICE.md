@@ -13,6 +13,6 @@ teardown-lab 整理自两个 MIT 开源项目，并带有一批 CC0 录音采样
 ## 相对上游的改动
 
 - 目录：上游 `sims/<name>-shared|-live|-film/` 拆成 `machines/<name>/` 下按职责分开的文件（见 `docs/ADDING-A-MACHINE.md`）；塞斯纳的 `gear.js` 拆成 `kin.js`（数学）和 `geometry.js`（建模）。
-- 时间线：影片的 SCRIPT 从 `film.js` 移到 `timeline.json`，`score.py` 只从同一个文件读时间，音画同表。重构后 V8 和塞斯纳的配乐与上游逐字节一致；Strandbeest 只有浮点舍入带来的采样级差异。
+- 时间线：影片的 SCRIPT 从 `film.js` 移到 `timeline.json`，`score.py` 只从同一个文件读时间，音画同表。重构后三台的配乐都与上游逐字节一致。
 - 命令：统一为 `npm run build|film|stills <machine>`（`kit/cli.mjs`），`npm install` 一条命令装好 Chromium 和 ffmpeg。
 - 无 GPU：`kit/paths.mjs` 在 Linux/CI 下自动用 SwiftShader，并默认切到 lo 画质；三台机器的 `stage.js` 都支持 `look.lo`。

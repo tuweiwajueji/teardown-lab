@@ -70,7 +70,7 @@ def score(mix, tl):
     labels = [iso_t + 0.9 + i * 0.3 for i in range(13)]
     ev = next(e for e in script if "wind" in e)
     WIND_EV = (ev["t"], *ev["wind"])
-    moves = [e["t"] + 0.1 for e in script if "view" in e and e["t"] > 0 and e.get("iso") != 1]
+    moves = [round(e["t"] + 0.1, 6) for e in script if "view" in e and e["t"] > 0 and e.get("iso") != 1]
     left, right, low, drums = bed(dur, 88, CHORDS, MOTIF, motif_voice="epiano", kicks=(0, 2.5), snares=(), hats=8, swing=0.0, keys_vel=0.7, keys_lp=3400)
     mix.put_stereo(0, left, right, 0.12)
     mix.put(0, low, 0.13)
